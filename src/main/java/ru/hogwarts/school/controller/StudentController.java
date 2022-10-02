@@ -1,0 +1,61 @@
+package ru.hogwarts.school.controller;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import ru.hogwarts.school.model.Student;
+import ru.hogwarts.school.service.StudentService;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+@RestController
+@RequestMapping("students")
+public class StudentController {
+    private final StudentService studentService;
+
+    public StudentController(StudentService studentService) {
+        this.studentService = studentService;
+    }
+
+    @PostMapping
+    public Student createStudent(@RequestBody Student student) { //+
+        return studentService.createStudent(student);
+    }
+
+    @GetMapping("{id}")
+    public ResponseEntity<Student> readStudent(@PathVariable Long id) { //+
+        Student student = studentService.readStudent(id);
+        if(student == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(student);
+    }
+
+    @PutMapping
+    public ResponseEntity<Student> updateStudent(@RequestBody Student student) {
+       Student studentUpdate = studentService.updateStudent(student);
+        if(studentUpdate == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(studentUpdate);
+    }
+
+    @DeleteMapping
+    public ResponseEntity<Student>  deleteStudent(@PathVariable Long id) {//++
+       Student student = studentService.deleteStudent(id);
+        if(student == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(student);
+    }
+
+    @GetMapping("/age/{age}")
+    public ResponseEntity<Collection<Student>> filterStudent(@PathVariable Integer age) { //+
+       List<Student> studentsAge = new ArrayList<>(studentService.filterStudent(age));
+        if(studentsAge == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(studentsAge);
+    }
+}
