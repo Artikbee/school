@@ -48,11 +48,8 @@ public class StudentController {
     }
 
     @GetMapping("/age/{age}")
-    public ResponseEntity<Collection<Student>> filterStudent(@PathVariable Integer age) { //+
+    public ResponseEntity<Collection<Student>> filterStudent(@RequestParam Integer age) { //+
        List<Student> studentsAge = new ArrayList<>(studentService.filterStudent(age));
-        if(studentsAge == null){
-            return ResponseEntity.notFound().build();
-        }
         return ResponseEntity.ok(studentsAge);
     }
 }

@@ -5,6 +5,7 @@ import ru.hogwarts.school.model.Student;
 import ru.hogwarts.school.repository.StudentRepository;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
@@ -21,7 +22,7 @@ public class StudentService {
    }
 
    public Student readStudent(Long id) { //find
-      return studentRepository.findById(id).get();
+      return studentRepository.findById(id).orElse(null);
    }
 
    public Student updateStudent(Student student) { //edit
@@ -32,9 +33,7 @@ public class StudentService {
       studentRepository.deleteById(id);
    }
 
-   public Collection<Student> filterStudent(int age){
-      return studentRepository.findAll().stream()
-              .filter(s -> s.getAge() == age)
-              .collect(Collectors.toList());
+   public List<Student> filterStudent(int age){ // TODO: надо подумать как его прописать в репозитории
+      return studentRepository.findByAge(age);
    }
 }

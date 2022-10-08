@@ -49,11 +49,8 @@ public class FacultyController {
     }
 
     @GetMapping("/color/{color}")
-    public ResponseEntity<Collection<Faculty>> filterFaculty(@PathVariable String color) { //+
+    public ResponseEntity<Collection<Faculty>> filterFaculty(@RequestParam String color) { //+
         List<Faculty> facultiesColor = new ArrayList<>(facultyService.filterFaculties(color));
-        if(facultiesColor == null){
-            return ResponseEntity.notFound().build();
-        }
         return ResponseEntity.ok(facultiesColor);
     }
 }
