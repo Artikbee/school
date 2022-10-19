@@ -47,4 +47,8 @@ public class StudentService {
       }
       return student.getFaculty();
    }
+
+   public List<Student> findAllStudent (){
+      return studentRepository.findAll();
+   }
 }

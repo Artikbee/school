@@ -19,6 +19,11 @@ public class StudentController {
         this.studentService = studentService;
     }
 
+    @GetMapping("/all")
+    public List<Student> findAllStudent(){
+        return studentService.findAllStudent();
+    }
+
     @PostMapping
     public Student createStudent(@RequestBody Student student) { //+
         return studentService.createStudent(student);
