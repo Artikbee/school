@@ -3,6 +3,7 @@ package ru.hogwarts.school.service;
 import org.springframework.stereotype.Service;
 import ru.hogwarts.school.model.Faculty;
 import ru.hogwarts.school.model.Student;
+import ru.hogwarts.school.model.StudentCountAllStudent;
 import ru.hogwarts.school.repository.StudentRepository;
 
 import java.util.List;
@@ -50,5 +51,9 @@ public class StudentService {
 
    public List<Student> findAllStudent (){
       return studentRepository.findAll();
+   }
+
+   public StudentCountAllStudent countAllStudent() {
+      return studentRepository.countAllStudent();
    }
 }
