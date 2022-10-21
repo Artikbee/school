@@ -23,4 +23,19 @@ ORDER BY age;
 
 SELECT *
 FROM student,faculty
-WHERE student.faculty_id =faculty.id
+WHERE student.faculty_id =faculty.id;
+
+SELECT count(*) as cont
+FROM student;
+
+SELECT round(AVG(age)) as avg
+FROM student;
+
+SELECT name as studentName
+FROM student
+ORDER BY id desc limit 5
+
+
+
+
+
