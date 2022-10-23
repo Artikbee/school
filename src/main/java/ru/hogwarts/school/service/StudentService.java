@@ -56,15 +56,15 @@ public class StudentService {
       return studentRepository.findAll();
    }
 
-   public StudentCountAllStudent countAllStudent() {
-      return studentRepository.countAllStudent();
+   public StudentCountAllStudent  getCount() {
+      return studentRepository.getCount();
    }
 
-   public AvgAgeOfStudent avgAgeOfStudent(){
-      return studentRepository.avgAgeOfStudent();
+   public AvgAgeOfStudent getAgv(){
+      return studentRepository.getAgv();
    }
 
-   public Collection<LastFiveStudents> lastFiveStudents(){
+   public Collection<LastFiveStudents> getLastFive(){
       return studentRepository.getLastFive();
    }
 

@@ -19,16 +19,16 @@ public class InfoByStudentController {
 
     @GetMapping("/count-All-Student")
     public StudentCountAllStudent countAllStudent(){
-        return studentService.countAllStudent();
+        return studentService.getCount();
     }
 
     @GetMapping("/average-age-of-student")
     public AvgAgeOfStudent avgAgeOfStudent(){
-        return studentService.avgAgeOfStudent();
+        return studentService.getAgv();
     }
 
     @GetMapping("/last-five-student")
     public Collection<LastFiveStudents> lastFiveStudents(){
-        return studentService.lastFiveStudents();
+        return studentService.getLastFive();
     }
 }

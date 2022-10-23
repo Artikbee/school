@@ -1,5 +1,5 @@
 package ru.hogwarts.school.entity;
 
 public interface AvgAgeOfStudent {
-    Double avgAgeOfStudent();
+    Double getAvg();
 }
