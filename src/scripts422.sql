@@ -9,6 +9,5 @@ CREATE TABLE car(
     id bigint primary key,
     marka varchar,
     model varchar,
-    sale varchar,
-    car_id bigint references car (id)
+    sale varchar
 );
