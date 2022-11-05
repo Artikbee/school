@@ -1,7 +1,6 @@
 -- liquibase formatted sql
 
 
-
 -- changeset usov:2
 CREATE INDEX student_name_find ON student (name);
 
