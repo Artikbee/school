@@ -1,4 +1,4 @@
-CREATE TABLE people(
+CREATE TABLE IF NOT EXISTS people(
     id bigint primary key,
     name varchar,
     age varchar,
@@ -6,7 +6,7 @@ CREATE TABLE people(
     car_id bigint references car (id)
 );
 
-CREATE TABLE car(
+CREATE TABLE IF NOT EXISTS car(
     id bigint primary key,
     marka varchar,
     model varchar,
