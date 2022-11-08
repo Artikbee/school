@@ -10,13 +10,14 @@ import ru.hogwarts.school.repository.FacultyRepository;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 public class FacultyService {
 
-    private final Logger logger  = LoggerFactory.getLogger(FacultyService.class);
+    private final Logger logger = LoggerFactory.getLogger(FacultyService.class);
 
     private final FacultyRepository facultyRepository;
 
@@ -54,20 +55,27 @@ public class FacultyService {
         return facultyRepository.findByNameOrColorIgnoreCase(nameOrColor, nameOrColor);
     }
 
-    public Faculty findFaculty(Long id){
+    public Faculty findFaculty(Long id) {
         logger.info("Was invoked method for find faculty");
         return facultyRepository.findById(id).orElse(null); // поиск id фака
     }
 
-    public List<Student> findStudentsByFaculty(Long id){
+    public List<Student> findStudentsByFaculty(Long id) {
         logger.info("Was invoked method for find students by faculty");
         Faculty faculty = findFaculty(id); // найденый фак по id
         List<Student> students = new ArrayList<>();
-        if(faculty != null){
+        if (faculty != null) {
             return faculty.getStudents();
         }
         return students;
     }
 
 
+    public String longName() {
+        logger.info("Was invoked method for longName");
+        return facultyRepository.findAll().stream()
+                .map(Faculty::getName)
+                .max(Comparator.comparingInt(String::length))
+                .orElse(null);
+    }
 }

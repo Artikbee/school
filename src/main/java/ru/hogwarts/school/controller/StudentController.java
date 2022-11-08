@@ -71,4 +71,14 @@ public class StudentController {
     public Faculty findFacultyByStudent(@RequestParam Long id){
         return studentService.findFacultyByStudent(id);
     }
+
+    @GetMapping("/studentWithA")
+    public List<String> studentWithA(){
+        return studentService.studentWithA();
+    }
+
+    @GetMapping("/studentAgeAvg")
+    public double studentAgeAvg(){
+        return studentService.studentAgeAvg();
+    }
 }
